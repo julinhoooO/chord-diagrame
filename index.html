@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+
+  <link rel="stylesheet" href="style/material-components/material-components-web.css" />
+  <link rel="stylesheet" href="style/helpers/colors.css" />
+  <link rel="stylesheet" href="style/helpers/helpers.css" />
+  <link rel="stylesheet" href="style/fontawesome/fontawesome.all.css" />
+  <link rel="stylesheet" href="style/helpers/animation.css">
+  <link rel="stylesheet" href="style/material-components/diagrama-components.css">
+  <link rel="stylesheet" href="style/material-components/bottom-sheet-component.css">
+
+</head>
+
+<body>
+  <div class="drawer grey lighten-1">
+    <div class="diagramaContent">
+      <div class="cifraAcorde">
+        <span></span>
+      </div>
+      <span class="casaInicial"></span>
+      <div class="diagrama white mdc-elevation--z4">
+        <div class="cordasDiagrama">
+          <div class="corda c6"></div>
+          <div class="corda c5"></div>
+          <div class="corda c4"></div>
+          <div class="corda c3"></div>
+          <div class="corda c2"></div>
+          <div class="corda c1"></div>
+        </div>
+        <div class="casasDiagrama">
+          <div class="casa c1"></div>
+          <div class="casa c2"></div>
+          <div class="casa c3"></div>
+          <div class="casa c4"></div>
+          <div class="casa c5"></div>
+        </div>
+        <div class="cordasTocadasDiagrama">
+          <i class="material-icons" id="cordasTocadas6">clear</i>
+          <i class="material-icons" id="cordasTocadas5">clear</i>
+          <i class="material-icons" id="cordasTocadas4">clear</i>
+          <i class="material-icons" id="cordasTocadas3">clear</i>
+          <i class="material-icons" id="cordasTocadas2">clear</i>
+          <i class="material-icons" id="cordasTocadas1">clear</i>
+        </div>
+        <div class="dedosDiagrama">
+          <div class="dedo d1 mdc-elevation--z4"><span>1</span></div>
+          <div class="dedo d2 mdc-elevation--z4"><span>2</span></div>
+          <div class="dedo d3 mdc-elevation--z4"><span>3</span></div>
+          <div class="dedo d4 mdc-elevation--z4"><span>4</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button href="#" class="mdc-fab black mdc-fab-expandable--trigger" aria-label="save" data-target="#settingsFab">
+    <span class="mdc-fab__icon material-icons">settings</span>
+  </button>
+
+  <div id="settingsFab" class="mdc-fab--expandable__items">
+    <button href="#" class="mdc-fab black buttonSave" aria-label="save" id="previewImageButton">
+      <span class="mdc-fab__icon material-icons">add_photo_alternate</span>
+    </button>
+    <button href="#" class="mdc-fab bottom-sheet-trigger black" aria-label="save" data-target="#bottom-sheet-form">
+      <span class="mdc-fab__icon material-icons white-text mdc-elevation--z4">add_box</span>
+    </button>
+
+    <button href="#" class="mdc-fab bottom-sheet-trigger black" data-target="#bottom-sheet-acordes">
+      <span class="mdc-fab__icon material-icons white-text mdc-elevation--z0">music_note</span>
+    </button>
+  </div>
+
+  <a id="saveImage"></a>
+
+  <div id="bottom-sheet-form" class="bottom-sheet bottom-sheet-form">
+    <div class="bottom-sheet--scrim"></div>
+    <div class="bottom-sheet--container">
+      <div class="mdc-layout-grid" style="margin: inherit;">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <div class="mdc-text-field mdc-helper-w-100">
+              <input type="text" id="cifra" class="mdc-text-field__input" />
+              <label class="mdc-floating-label" for="my-text-field">Acorde</label>
+              <div class="mdc-line-ripple"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="labelDedo">Posição dos dedos</span>
+      <div class="mdc-layout-grid no-padding--top" style="margin: inherit;">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <div class="buttonsContainer flex--space-around mt-18">
+              <button class="mdc-button bottom-sheet-trigger" data-target="#bottom-sheet-d1">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">pan_tool</i>
+                <span class="mdc-button__label">Dedo 1</span>
+              </button>
+              <button class="mdc-button bottom-sheet-trigger" data-target="#bottom-sheet-d2">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">pan_tool</i>
+                <span class="mdc-button__label">Dedo 2</span>
+              </button>
+              <button class="mdc-button bottom-sheet-trigger" data-target="#bottom-sheet-d3">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">pan_tool</i>
+                <span class="mdc-button__label">Dedo 3</span>
+              </button>
+              <button class="mdc-button bottom-sheet-trigger" data-target="#bottom-sheet-d4">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">pan_tool</i>
+                <span class="mdc-button__label">Dedo 4</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="labelDedo">Selecionar Cordas Tocadas</span>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <div class="labelsCheckbox">
+              <label for="checkboxCorda6" class="labelCheckboxCorda">6ª</label>
+              <label for="checkboxCorda5" class="labelCheckboxCorda">5ª</label>
+              <label for="checkboxCorda4" class="labelCheckboxCorda">4ª</label>
+              <label for="checkboxCorda3" class="labelCheckboxCorda">3ª</label>
+              <label for="checkboxCorda2" class="labelCheckboxCorda">2ª</label>
+              <label for="checkboxCorda1" class="labelCheckboxCorda">1ª</label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell--span-12 flex--space-around">
+            <div class="mdc-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxCorda6" />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <div class="mdc-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxCorda5" />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <div class="mdc-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxCorda4" />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <div class="mdc-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxCorda3" />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <div class="mdc-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxCorda2" />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <div class="mdc-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxCorda1" />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top" style="margin: inherit;">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <div class="buttonsContainer flex--space-around mt-18">
+              <button class="mdc-button" id="montarAcordeBtn">
+                <span class="mdc-button__label">Montar Acorde</span>
+              </button>
+              <button class="mdc-button" id="salvarAcorde">
+                <span class="mdc-button__label">Salvar Acorde</span>
+              </button>
+              <button class="mdc-button buttonReset">
+                <span class="mdc-button__label">Resetar Acorde</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-sheet--action" data-action="minimize">
+      <i class="material-icons">arrow_drop_down</i>
+    </div>
+  </div>
+  <div id="bottom-sheet-d1" class="bottom-sheet">
+    <div class="bottom-sheet--scrim"></div>
+    <div class="bottom-sheet--container">
+      <div class="bottom-sheet--title">Posição Dedo 1</div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <label class="label-radio">Corda</label>
+            <div class="container-radios">
+              <label class="radio-container">1ª Corda
+                <input name="cordad1" data-dedo="1" data-tipo="corda" value="1" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">2ª Corda
+                <input name="cordad1" data-dedo="1" data-tipo="corda" value="2" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">3ª Corda
+                <input name="cordad1" data-dedo="1" data-tipo="corda" value="3" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">4ª Corda
+                <input name="cordad1" data-dedo="1" data-tipo="corda" value="4" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">5ª Corda
+                <input name="cordad1" data-dedo="1" data-tipo="corda" value="5" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">6ª Corda
+                <input name="cordad1" data-dedo="1" data-tipo="corda" value="6" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <label class="label-radio">Casa</label>
+            <div class="container-radios">
+              <label class="radio-container">1ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="1" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">2ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="2" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">3ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="3" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">4ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="4" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">5ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="5" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">6ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="6" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+            <div class="container-radios">
+              <label class="radio-container">7ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="7" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">8ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="8" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">9ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="9" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">10ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="10" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">11ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="11" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">12ª Casa
+                <input name="casad1" data-dedo="1" data-tipo="casa" value="12" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <div class="container-radios">
+              <label class="radio-container">Pestana
+                <input name="pestanad1" data-dedo="1" data-tipo="pestana" type="checkbox">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-sheet--action" data-action="close">
+      <i class="material-icons">close</i>
+    </div>
+  </div>
+  <div id="bottom-sheet-d2" class="bottom-sheet">
+    <div class="bottom-sheet--scrim"></div>
+    <div class="bottom-sheet--container">
+      <div class="bottom-sheet--title">Posição Dedo 2</div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <label class="label-radio">Corda</label>
+            <div class="container-radios">
+              <label class="radio-container">1ª Corda
+                <input name="cordad2" data-dedo="2" data-tipo="corda" value="1" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">2ª Corda
+                <input name="cordad2" data-dedo="2" data-tipo="corda" value="2" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">3ª Corda
+                <input name="cordad2" data-dedo="2" data-tipo="corda" value="3" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">4ª Corda
+                <input name="cordad2" data-dedo="2" data-tipo="corda" value="4" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">5ª Corda
+                <input name="cordad2" data-dedo="2" data-tipo="corda" value="5" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">6ª Corda
+                <input name="cordad2" data-dedo="2" data-tipo="corda" value="6" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <label class="label-radio">Casa</label>
+            <div class="container-radios">
+              <label class="radio-container">1ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="1" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">2ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="2" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">3ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="3" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">4ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="4" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">5ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="5" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">6ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="6" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+            <div class="container-radios">
+              <label class="radio-container">7ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="7" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">8ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="8" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">9ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="9" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">10ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="10" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">11ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="11" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">12ª Casa
+                <input name="casad2" data-dedo="2" data-tipo="casa" value="12" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <div class="container-radios">
+              <label class="radio-container">Pestana
+                <input name="pestanad2" data-dedo="2" data-tipo="pestana" type="checkbox">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-sheet--action" data-action="close">
+      <i class="material-icons">close</i>
+    </div>
+  </div>
+  <div id="bottom-sheet-d3" class="bottom-sheet">
+    <div class="bottom-sheet--scrim"></div>
+    <div class="bottom-sheet--container">
+      <div class="bottom-sheet--title">Posição Dedo 3</div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <label class="label-radio">Corda</label>
+            <div class="container-radios">
+              <label class="radio-container">1ª Corda
+                <input name="cordad3" data-dedo="3" data-tipo="corda" value="1" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">2ª Corda
+                <input name="cordad3" data-dedo="3" data-tipo="corda" value="2" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">3ª Corda
+                <input name="cordad3" data-dedo="3" data-tipo="corda" value="3" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">4ª Corda
+                <input name="cordad3" data-dedo="3" data-tipo="corda" value="4" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">5ª Corda
+                <input name="cordad3" data-dedo="3" data-tipo="corda" value="5" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">6ª Corda
+                <input name="cordad3" data-dedo="3" data-tipo="corda" value="6" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <label class="label-radio">Casa</label>
+            <div class="container-radios">
+              <label class="radio-container">1ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="1" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">2ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="2" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">3ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="3" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">4ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="4" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">5ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="5" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">6ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="6" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+            <div class="container-radios">
+              <label class="radio-container">7ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="7" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">8ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="8" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">9ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="9" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">10ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="10" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">11ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="11" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">12ª Casa
+                <input name="casad3" data-dedo="3" data-tipo="casa" value="12" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <div class="container-radios">
+              <label class="radio-container">Pestana
+                <input name="pestanad3" data-dedo="3" data-tipo="pestana" type="checkbox">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-sheet--action" data-action="close">
+      <i class="material-icons">close</i>
+    </div>
+  </div>
+  <div id="bottom-sheet-d4" class="bottom-sheet">
+    <div class="bottom-sheet--scrim"></div>
+    <div class="bottom-sheet--container">
+      <div class="bottom-sheet--title">Posição Dedo 4</div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <label class="label-radio">Corda</label>
+            <div class="container-radios">
+              <label class="radio-container">1ª Corda
+                <input name="cordad4" data-dedo="4" data-tipo="corda" value="1" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">2ª Corda
+                <input name="cordad4" data-dedo="4" data-tipo="corda" value="2" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">3ª Corda
+                <input name="cordad4" data-dedo="4" data-tipo="corda" value="3" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">4ª Corda
+                <input name="cordad4" data-dedo="4" data-tipo="corda" value="4" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">5ª Corda
+                <input name="cordad4" data-dedo="4" data-tipo="corda" value="5" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">6ª Corda
+                <input name="cordad4" data-dedo="4" data-tipo="corda" value="6" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <label class="label-radio">Casa</label>
+            <div class="container-radios">
+              <label class="radio-container">1ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="1" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">2ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="2" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">3ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="3" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">4ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="4" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">5ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="5" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">6ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="6" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+            <div class="container-radios">
+              <label class="radio-container">7ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="7" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">8ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="8" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">9ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="9" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">10ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="10" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">11ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="11" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+              <label class="radio-container">12ª Casa
+                <input name="casad4" data-dedo="4" data-tipo="casa" value="12" type="radio">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid no-padding--top">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-12">
+            <div class="container-radios">
+              <label class="radio-container">Pestana
+                <input name="pestanad4" data-dedo="4" data-tipo="pestana" type="checkbox">
+                <span class="radio-checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-sheet--action" data-action="close">
+      <i class="material-icons">close</i>
+    </div>
+  </div>
+  <div id="bottom-sheet-acordes" class="bottom-sheet">
+    <div class="bottom-sheet--scrim"></div>
+    <div class="bottom-sheet--container" id="acordesListContainer">
+    </div>
+    <div class="bottom-sheet--action" data-action="minimize">
+      <i class="material-icons">arrow_drop_down</i>
+    </div>
+  </div>
+
+  <script src="style/material-components/material-components-web.js"></script>
+  <script src="scripts/jquery/jquery.min.js"></script>
+  <script src="scripts/animeJS/anime.min.js"></script>
+  <script src="scripts/html2canvas/html2canvas.min.js"></script>
+  <script src="style/material-components/bottom-sheet-component.js"></script>
+  <script src="style/material-components/expandable-fab-component.js"></script>
+  <script src="scripts/localStorageAPI/localStorageAPI.js"></script>
+  <script>
+    if (ls.Exist("acordes")) {
+      var acordesSalvos = ls.GetObj("acordes");
+    } else {
+      const arrAcordesLocalStorage = {
+        "A": {},
+        "A#": {},
+        "B": {},
+        "C": {},
+        "C#": {},
+        "D": {},
+        "D#": {},
+        "E": {},
+        "F": {},
+        "F#": {},
+        "G": {},
+        "G#": {},
+      };
+      ls.AddObj("acordes", arrAcordesLocalStorage);
+      var acordesSalvos = ls.GetObj("acordes");
+    }
+    getAcordes();
+    window.addEventListener("resize", function (event) {
+      [].slice.call(document.querySelectorAll(".dedo")).forEach(ele => {
+        for (let index = 1; index <= 4; index++) {
+          var cordsCasa = false;
+          var cordsCorda = false;
+          if (acorde["dedo" + index].corda) {
+            cordsCorda = getElePosition(
+              $(".corda.c" + acorde["dedo" + index].corda)
+            );
+          }
+          if (acorde["dedo" + index].casa) {
+            cordsCasa = getElePosition(
+              $(".casa.c" + acorde["dedo" + index].casa)
+            );
+          }
+          if (cordsCasa && cordsCorda) {
+            if (index == 1) {
+              if (acorde["dedo1"].pestana) {
+                $(".dedo.d1")
+                  .css({
+                    display: "flex",
+                    top: cordsCasa.top + 16 + "px",
+                    left: cordsCorda.left - 32 + "px",
+                    width: 294 -
+                      $distanciaCordas *
+                      ((acorde["dedo" + index].corda - 6) * 1) +
+                      "px"
+                  })
+                  .children("span")
+                  .html("");
+              } else {
+                $(".dedo.d" + index)
+                  .css({
+                    display: "flex",
+                    top: cordsCasa.top + 16 + "px",
+                    left: cordsCorda.left - 16 + "px",
+                    width: 36 + "px"
+                  })
+                  .children("span")
+                  .html(index);
+              }
+            } else {
+              $(".dedo.d" + index)
+                .css({
+                  display: "flex",
+                  top: cordsCasa.top + 16 + "px",
+                  left: cordsCorda.left - 16 + "px",
+                  width: 36 + "px"
+                })
+                .children("span")
+                .html(index);
+            }
+          }
+        }
+      });
+    });
+    [].slice
+      .call(document.querySelectorAll(".mdc-text-field"))
+      .forEach(ele => mdc.textField.MDCTextField.attachTo(ele));
+    var cordasTocadas = {
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false,
+      6: false
+    };
+    [].slice.call(document.querySelectorAll(".mdc-checkbox")).forEach(ele => {
+      var $checkbox = mdc.checkbox.MDCCheckbox.attachTo(ele);
+      $checkbox.listen("change", event => {
+        var $corda = $($checkbox.nativeCb_)
+          .attr("id")
+          .replace(/^\D+/g, "");
+        var $idIcone = "cordasTocadas" + $corda;
+        if ($checkbox.checked) {
+          cordasTocadas[$corda] = true;
+        } else {
+          cordasTocadas[$corda] = false;
+        }
+      });
+      [].slice
+        .call(document.querySelectorAll(".buttonReset"))
+        .forEach(buttonReset => {
+          buttonReset.addEventListener("click", event => {
+            document.querySelector(".cifraAcorde span").innerHTML = "";
+            $checkbox.checked = false;
+            for (let index = 1; index <= 6; index++) {
+              $("#cordasTocadas" + index).html("clear");
+            }
+          });
+        });
+    });
+
+    function getElePosition(ele, position) {
+      if (!ele.length) {
+        return false;
+      }
+      var diagrama = $(".diagrama");
+
+      var cords = ele.position();
+
+      cords.top += diagrama.position().top;
+
+      return cords;
+    }
+    var dedos = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    var acorde = {
+      inicio: 1,
+      dedo1: {
+        corda: false,
+        casa: false,
+        pestana: false
+      },
+      dedo2: {
+        corda: false,
+        casa: false,
+        pestana: false
+      },
+      dedo3: {
+        corda: false,
+        casa: false,
+        pestana: false
+      },
+      dedo4: {
+        corda: false,
+        casa: false,
+        pestana: false
+      }
+    };
+
+    var cordasTeste = [$(".corda.c1"), $(".corda.c2")];
+    var $distanciaCordas =
+      cordasTeste[1][0].getBoundingClientRect().left -
+      cordasTeste[0][0].getBoundingClientRect().left;
+
+    var existAcorde = (cifraAcorde) => {
+      const acordes = ls.GetArr("acordes");
+      for (j = 0; j < acordes.length; j++) {
+        if (Object.values(acordes[j]).indexOf(cifraAcorde) >= 0) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+
+    //Função para gerar e salvar imagem do diagrama do acorde
+    const buttonSaveImage = document.querySelector("#previewImageButton");
+    buttonSaveImage.addEventListener("click", event => {
+      var elementCanvas = document.querySelector(".diagramaContent");
+      var cifraAcorde = document.querySelector(".cifraAcorde span").innerHTML;
+      if (!cifraAcorde) {
+        alert("Insira o nome do acorde!");
+        return false;
+      }
+      var getCanvas;
+      html2canvas(elementCanvas).then(canvas => {
+        var imageData = canvas.toDataURL("image/png");
+        var newData = imageData.replace(
+          /^data:image\/png/,
+          "data:application/octet-stream"
+        );
+        var buttonDownload = document.querySelector("#saveImage");
+        buttonDownload.setAttribute("download", cifraAcorde + ".png");
+        buttonDownload.setAttribute("href", newData);
+        buttonDownload.click();
+      });
+    });
+
+    const buttonSaveAcorde = document.querySelector("#salvarAcorde");
+    buttonSaveAcorde.addEventListener("click", event => {
+      var cifraAcorde = document.querySelector(".cifraAcorde span").innerHTML;
+      if (!cifraAcorde) {
+        alert("Insira o nome do acorde!");
+        return false;
+      }
+      var propriedade = /([A-G]([#b])?)/g.exec(cifraAcorde)[0];
+      acordesSalvos[propriedade][cifraAcorde] = {
+        "cifra": cifraAcorde,
+        "posicao": acorde,
+        "cordasTocadas": cordasTocadas
+      };
+      ls.Delete("acordes")
+      ls.AddObj("acordes", acordesSalvos);
+      getAcordes();
+      executeAjax({
+        type: "add",
+        group: propriedade,
+        cifra: cifraAcorde,
+        posicoes: acorde,
+        cordas_tocadas: cordasTocadas,
+        casa_inicial: acorde.inicio
+      });
+    });
+
+    [].slice
+      .call(document.querySelectorAll(".bottom-sheet-trigger"))
+      .forEach(ele => {
+        var bottomSheet = new BottomSheet(ele);
+      });
+    [].slice
+      .call(document.querySelectorAll(".buttonReset"))
+      .forEach(buttonReset => {
+        buttonReset.addEventListener("click", event => {
+          [].slice
+            .call(document.querySelectorAll(".radio-container input"))
+            .forEach(ele => {
+              ele.checked = false;
+            });
+          [].slice
+            .call(document.querySelectorAll(".dedo"))
+            .forEach(ele => {
+              ele.style.display = "none";
+            });
+          document.querySelector(".cifraAcorde span").innerHTML = "";
+          document.querySelector("#cifra").value = "";
+          acorde = {
+            inicio: 1,
+            dedo1: {
+              corda: false,
+              casa: false,
+              pestana: false
+            },
+            dedo2: {
+              corda: false,
+              casa: false,
+              pestana: false
+            },
+            dedo3: {
+              corda: false,
+              casa: false,
+              pestana: false
+            },
+            dedo4: {
+              corda: false,
+              casa: false,
+              pestana: false
+            }
+          };
+          cordasTocadas = {
+            1: false,
+            2: false,
+            3: false,
+            4: false,
+            5: false,
+            6: false
+          };
+        });
+      });
+
+
+    [].slice
+      .call(document.querySelectorAll(".mdc-fab-expandable--trigger"))
+      .forEach(ele => {
+        var expandableFab = new ExpandableFab(ele);
+      });
+
+    function getAcordes() {
+      var objAcordes = ls.GetObj("acordes");
+      var listaAcordes = Object.getOwnPropertyNames(objAcordes);
+      var list = '<ul class="mdc-list mdc-list-expandable">';
+      for (let index = 0; index < listaAcordes["length"]; index++) {
+        var listaAcorde = Object.getOwnPropertyNames(objAcordes[listaAcordes[index]]);
+        if (listaAcorde["length"]) {
+          list += '<li class="mdc-list-item mdc-expandable-panel-trigger">' +
+            '<i class="mdc-expandable-panel__dropdown-icon"></i>' +
+            '<span class="mdc-expandable-panel-trigger--text">' + listaAcordes[index] + '</span>' +
+            '</li>' +
+            '<ul class="mdc-expandable-panel">';
+          for (let j = 0; j < listaAcorde["length"]; j++) {
+            list +=
+              '<li class="mdc-expandable-panel-item acordeTrigger" data-group="' + listaAcordes[index] +
+              '" data-acorde="' + listaAcorde[j] + '" tabindex="0">' + listaAcorde[j] + '</li>';
+          }
+          list += '</ul>' +
+            '</li>';
+        }
+      }
+      list += '</ul>';
+      document.querySelector("#acordesListContainer").innerHTML = list;
+
+      var MDCList = mdc.list.MDCList.attachTo(document.querySelector(".mdc-list"));
+      MDCList.setListExpandable_();
+      MDCList.listElements.map((listItemEl) => mdc.ripple.MDCRipple.attachTo((listItemEl)));
+
+      [].slice
+        .call(document.querySelectorAll(".acordeTrigger"))
+        .forEach(ele => {
+          mdc.ripple.MDCRipple.attachTo((ele));
+          ele.addEventListener("click", event => {
+            const click = new Event("click");
+            document.querySelectorAll(".buttonReset")[0].dispatchEvent(click);
+            montarAcordeSalvo(ele.dataset.group, ele.dataset.acorde);
+          });
+        });
+    }
+
+
+
+    function montarAcordeSalvo(group, acord) {
+      var cordasTeste = [$(".corda.c1"), $(".corda.c2")];
+      var $distanciaCordas =
+        cordasTeste[1][0].getBoundingClientRect().left -
+        cordasTeste[0][0].getBoundingClientRect().left;
+      const acordes = ls.GetObj("acordes");
+      const acordeArr = acordes[group][acord];
+      document.querySelector(".cifraAcorde span").innerHTML = acordeArr.cifra;
+      for (let index = 1; index <= 4; index++) {
+        var cordsCasa = false;
+        var cordsCorda = false;
+        if (acordeArr.posicao["dedo" + index].corda) {
+          cordsCorda = getElePosition(
+            $(".corda.c" + acordeArr.posicao["dedo" + index].corda)
+          );
+        }
+        if (acordeArr.posicao["dedo" + index].casa) {
+          cordsCasa = getElePosition(
+            $(".casa.c" + acordeArr.posicao["dedo" + index].casa)
+          );
+        }
+        if (cordsCasa && cordsCorda) {
+          if (index == 1) {
+            if (acordeArr.posicao["dedo1"].pestana) {
+              $(".dedo.d1")
+                .css({
+                  display: "flex",
+                  top: cordsCasa.top + 16 + "px",
+                  left: cordsCorda.left - 32 + "px",
+                  width: 294 -
+                    $distanciaCordas *
+                    ((acordeArr.posicao["dedo" + index].corda - 6) * 1) +
+                    "px"
+                })
+                .children("span")
+                .html("");
+            } else {
+              $(".dedo.d" + index)
+                .css({
+                  display: "flex",
+                  top: cordsCasa.top + 16 + "px",
+                  left: cordsCorda.left - 16 + "px",
+                  width: 36 + "px"
+                })
+                .children("span")
+                .html(index);
+            }
+          } else {
+            $(".dedo.d" + index)
+              .css({
+                display: "flex",
+                top: cordsCasa.top + 16 + "px",
+                left: cordsCorda.left - 16 + "px",
+                width: 36 + "px"
+              })
+              .children("span")
+              .html(index);
+          }
+        }
+      }
+      for (let i = 1; i <= Object.keys(acordeArr.cordasTocadas).length; i++) {
+        if (acordeArr.cordasTocadas[i]) {
+          $("#cordasTocadas" + i).html("panorama_fish_eye");
+        }
+      }
+      acorde = acordeArr.posicao;
+    }
+
+
+    [].slice
+      .call(document.querySelectorAll(".radio-container"))
+      .forEach(ele => {
+        var ripple = mdc.ripple.MDCRipple.attachTo((ele));
+        ripple.unbounded = true;
+      });
+
+    [].slice
+      .call(document.querySelectorAll(".radio-container input"))
+      .forEach(ele => {
+        ele.addEventListener("click", event => {
+          var dedo = parseInt(ele.dataset.dedo);
+          var tipo = ele.dataset.tipo;
+          var valor = parseInt(ele.value);
+          acorde["dedo" + dedo][tipo] = valor;
+          if (tipo == "pestana") {
+            acorde["dedo" + dedo][tipo] = ele.checked;
+          }
+        });
+      });
+    var casaInicial = (acorde) => {
+      const arrAcorde = Object.values(acorde);
+      var dedo = [];
+      for (let index = 1; index < arrAcorde.length; index++) {
+        if (Object.values(arrAcorde[index])[1]) {
+          dedo.push(Object.values(arrAcorde[index])[1]);
+        }
+      }
+      if (dedo.sort((prev, next) => next - prev)[0] > 5) {
+        return dedo.sort((prev, next) => prev - next)[0];
+      } else {
+        return 1;
+      }
+    }
+    document.querySelector("#montarAcordeBtn").addEventListener("click", event => {
+      var cordasTeste = [$(".corda.c1"), $(".corda.c2")];
+      var $distanciaCordas =
+        cordasTeste[1][0].getBoundingClientRect().left -
+        cordasTeste[0][0].getBoundingClientRect().left;
+      var cI = casaInicial(acorde);
+      document.querySelector(".cifraAcorde span").innerHTML = document.querySelector("#cifra").value;
+      document.querySelector(".casaInicial").innerHTML = cI + "ª";
+      for (let index = 1; index <= 4; index++) {
+        var cordsCasa = false;
+        var cordsCorda = false;
+        if (acorde["dedo" + index].corda) {
+          cordsCorda = getElePosition(
+            $(".corda.c" + acorde["dedo" + index].corda)
+          );
+        }
+        if (acorde["dedo" + index].casa) {
+          var casa = acorde["dedo" + index].casa - (cI - 1);
+          cordsCasa = getElePosition(
+            $(".casa.c" + casa)
+          );
+        }
+        if (cordsCasa && cordsCorda) {
+          if (acorde["dedo" + index].pestana) {
+            $(".dedo.d" + index)
+              .css({
+                display: "flex",
+                top: cordsCasa.top + 16 + "px",
+                left: cordsCorda.left - 32 + "px",
+                width: 294 -
+                  $distanciaCordas *
+                  ((acorde["dedo" + index].corda - 6) * 1) +
+                  "px"
+              })
+              .children("span")
+              .html("");
+          } else {
+            $(".dedo.d" + index)
+              .css({
+                display: "flex",
+                top: cordsCasa.top + 16 + "px",
+                left: cordsCorda.left - 16 + "px",
+                width: 36 + "px"
+              })
+              .children("span")
+              .html(index);
+          }
+        }
+      }
+      for (let i = 1; i <= Object.keys(cordasTocadas).length; i++) {
+        if (cordasTocadas[i]) {
+          $("#cordasTocadas" + i).html("panorama_fish_eye");
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
