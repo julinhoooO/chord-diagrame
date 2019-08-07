@@ -1,0 +1,174 @@
+.hide {
+  display: none !important;
+}
+
+.left-align {
+  text-align: left !important;
+}
+
+.right-align {
+  text-align: right !important;
+}
+
+.center,
+.center-align {
+  text-align: center !important;
+}
+
+.left {
+  float: left !important;
+}
+
+.right {
+  float: right !important;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex--space-around {
+  display: flex !important;
+  justify-content: space-around !important;
+}
+
+.truncate {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-padding--top {
+  padding-top: 0 !important;
+}
+
+.no-padding--bottom {
+  padding-bottom: 0 !important;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .hide-on-small-only,
+  .hide-on-small-and-down {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .hide-on-med-and-down {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .hide-on-med-and-up {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .hide-on-med-only {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .hide-on-large-only {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .hide-on-extra-large-only {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .show-on-extra-large {
+    display: block !important;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .show-on-large {
+    display: block !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .show-on-medium {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .show-on-small {
+    display: block !important;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .show-on-medium-and-up {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .show-on-medium-and-down {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .center-on-small-only {
+    text-align: center;
+  }
+}
+
+.pointer-cursor {
+  cursor: pointer !important;
+}
+
+.visibilityPassword {
+  pointer-events: all !important;
+}
+
+.material-tooltip {
+  display: flex;
+  position: absolute;
+  width: auto;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(150, 150, 150, 0.9);
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100000;
+}
+
+.tooltip-content {
+  padding: 10px;
+}
+
+select[readonly] {
+  pointer-events: none;
+  touch-action: none;
+}
+
+.mt-18 {
+  margin-top: 18px;
+}

@@ -1,0 +1,347 @@
+.drawer {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.diagramaContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 460px;
+}
+
+.diagramaContent .diagrama {
+  width: 250px;
+  height: 350px;
+  border-radius: 12px;
+}
+
+.diagramaContent .cifraAcorde {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  margin-bottom: 15px;
+  height: 27px;
+  font-size: 24px;
+}
+
+.casaInicial {
+  font-family: Roboto, sans-serif;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top: -9px;
+  left: -145px;
+  height: 35px;
+  margin-bottom: -35px;
+  font-size: 24px;
+}
+
+.cordasDiagrama {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 100%;
+}
+
+.cordasDiagrama .corda {
+  width: 2px;
+  height: 100%;
+  background-color: rgba(50, 50, 50, 0.9);
+  box-shadow: 0px 0px 3px -4px rgba(0, 0, 0, 0.2),
+    -1px 0px 4px 1px rgba(0, 0, 0, 0.14), 1px 0px 4px 1px rgba(0, 0, 0, 0.12);
+}
+
+.cordasDiagrama .corda::before {
+  content: " ";
+  display: block;
+  width: 50px;
+  height: 100%;
+  margin-left: -25px;
+  z-index: 10;
+}
+
+.casasDiagrama {
+  position: relative;
+  top: -350px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.casasDiagrama .casa {
+  height: calc(100% / 5);
+}
+
+.casasDiagrama .casa:not(:last-child) {
+  border-bottom: 2px solid rgba(50, 50, 50, 0.9);
+}
+
+.cordasTocadasDiagrama {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: -340px;
+}
+
+.dedosDiagrama .dedo {
+  display: none;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(35, 35, 35, 0.98);
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+}
+
+.dedosDiagrama .dedo span {
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  color: white;
+}
+
+.labelDedo {
+  text-align: left;
+  font-weight: 700;
+  font-family: Roboto, sans-serif;
+  margin: 15px 15px 0 15px;
+}
+
+.labelsCheckbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: -18px;
+  margin-top: 18px;
+}
+
+.labelsCheckbox .labelCheckboxCorda {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.mdc-fab.mdc-fab--extended {
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+  transition: width 0.2s linear;
+}
+
+.mdc-fab.mdc-fab--extended.mdc-fab--extended__position-bottom-right {
+  bottom: 8px;
+  right: 8px;
+}
+
+.mdc-fab.mdc-fab--extended.mdc-fab--extended__position-top-right {
+  top: 8px;
+  right: 8px;
+}
+
+.mdc-fab.mdc-fab--extended.mdc-fab--extended__position-bottom-left {
+  bottom: 8px;
+  left: 8px;
+}
+
+.mdc-fab.mdc-fab--extended.mdc-fab--extended__position-top-left {
+  top: 8px;
+  left: 8px;
+}
+
+.mdc-fab.mdc-fab--extended .mdc-fab__icon {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  width: 18px;
+  height: 18px;
+}
+
+.mdc-fab.mdc-fab--extended:hover {
+  width: 200px !important;
+  justify-content: flex-start;
+}
+
+.mdc-fab.mdc-fab--extended:hover .mdc-fab__icon {
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+.mdc-fab .mdc-fab--extended__text {
+  display: none;
+}
+
+.mdc-fab.mdc-fab--extended:hover .mdc-fab--extended__text {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mdc-fab-expandable--trigger {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 2;
+  will-change: transform;
+}
+
+.mdc-fab-expandable--trigger.mdc-fab-expandable--expanded {
+  transform: rotate(180deg);
+}
+
+.mdc-fab--expandable__items {
+  display: flex;
+  width: 56px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+.mdc-fab--expandable__items .mdc-fab {
+  position: absolute;
+  margin-top: 8px;
+  width: 40px !important;
+  height: 40px !important;
+  transform: translateY(-40px);
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+}
+
+#saveImage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.container-radios {
+  font-family: Roboto, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.label-radio {
+  font-family: Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 400;
+  background: rgba(245, 245, 245, 1);
+}
+
+.radio-container {
+  font-family: Roboto, sans-serif;
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: calc(33.333% - 10px);
+  height: 50%;
+  min-height: 50px;
+  margin: 5px;
+}
+
+@media (max-width: 580px) {
+  .radio-container {
+    flex-basis: 30%;
+  }
+}
+
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.radio-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 4px;
+}
+
+.radio-container:hover input~.radio-checkmark {
+  box-shadow: inset 0px 0px 0px 1px rgb(1, 135, 134);
+}
+
+.radio-container input:checked~.radio-checkmark {
+  transition: box-shadow .05s linear;
+  box-shadow: inset 0px 0px 0px 2px rgb(1, 135, 134);
+}
+
+.radio-checkmark:after {
+  content: "";
+  background-image: url(done-white.png);
+  background-size: 18px;
+  position: absolute;
+  display: none;
+}
+
+.radio-container input:checked~.radio-checkmark:after {
+  display: block;
+}
+
+.radio-checkmark:before {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.radio-container input:checked~.radio-checkmark:before {
+  display: block;
+}
+
+.radio-container .radio-checkmark:after {
+  bottom: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.radio-container .radio-checkmark:before {
+  bottom: -14px;
+  right: -14px;
+  width: 0;
+  height: 0;
+  border: 16px solid;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: rgb(1, 135, 134);
+  transform: rotate(135deg);
+}
